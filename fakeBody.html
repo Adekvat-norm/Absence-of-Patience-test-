@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="beauty.css" />
+    <title>test</title>
+  </head>
+  <body>
+    <div id="title" class="test">
+      <div id="test-title" class="test_title"></div>
+      <div class="test_progressWrap">
+        <div class="test_progress">
+          <div id="progress-fill" class="test_progressFill"></div>
+        </div>
+        <div class="test_progressQuestion">
+          <strong id="question-number">1</strong>
+          <span>/</span>
+          <span id="total-questions">10</span>
+        </div>
+      </div>
+      <div id="question-wrap" class="test_question">
+        <strong id="question-position">1</strong>
+        <span id="quest"></span>
+      </div>
+      <div id="answers" class="test_answers">
+      </div>
+      <div class="test_btn" id="next">Следующий вопрос</div>
+      <div id="result" class="test_result">
+        <div class="test_result_title">✨</div>
+        <div class="test_result_info">
+          <span>Верных ответов</span><br>
+          <span id="valid-answers" class="test_result_num">2</span>
+          <span>из</span>
+          <span id="result_total_questions" class="test_result_num">10</span>
+        </div>
+      </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="actionHandler.js"></script>
+  </body>
+</html>

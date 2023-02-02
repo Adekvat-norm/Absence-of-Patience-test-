@@ -1,0 +1,173 @@
+:root {
+  --gradient: linear-gradient(
+    to right bottom,
+    rgb(234, 52, 200),
+    rgb(6, 246, 58)
+  );
+  --gradient_2: linear-gradient(to right bottom, #39ff31, red);
+  --questColor: rgb(118, 164, 133);
+  --padding_block: 8px 12px;
+  --radius: 16px;
+  --border: 1px solid #0000005e;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.test {
+  width: 800px;
+  min-height: 600px;
+  padding: 64px;
+  background: var(--gradient);
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+}
+.test_title {
+  font-size: 24px;
+  font-weight: 200;
+  margin-bottom: 8px;
+}
+.test_progressWrap {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 16px;
+  align-items: center;
+  padding: var(--padding_block);
+  background-color: var(--questColor);
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.test_progress {
+  --size: 16px;
+  height: var(--size);
+  border-radius: var(--size);
+  background-color: aliceblue;
+  margin-right: 16px;
+  position: relative;
+  border: var(--border);
+}
+.test_progressFill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 30%;
+  border-radius: var(--size);
+  background: var(--gradient_2);
+  transition: width 0.5s ease-in-out;
+}
+.test_progressQuestion {
+  font-weight: 200;
+  font-size: 16px;
+}
+.test_progressQuestion strong {
+  font-weight: 800;
+}
+.test_question {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.test_question strong {
+  margin-right: 4px;
+}
+.test_answers {
+  background: var(--questColor);
+  padding: 12px;
+  border-radius: var(--radius);
+}
+.test_answer {
+  cursor: pointer;
+  padding: var(--padding_block);
+  background: #00000030;
+  color: white;
+  border-radius: var(--radius);
+  font-weight: 300;
+  line-height: 1.2em;
+}
+.test_answer:not(:last-child) {
+  margin-bottom: 16px;
+}
+.test_answer_valid,
+.test_answer_invalid {
+  size: 20px;
+  position: relative;
+  border: var(--border);
+  background: darkgreen;
+  padding-right: calc(var(--size) + 17px);
+}
+
+.test_answer_valid::after,
+.test_answer_invalid::after {
+  --size: 25px;
+  content: "\2713";
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 3px;
+  margin-top: calc(var(--size) / -2);
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--size);
+  border: var(--border);
+  background: var(--gradient_2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+.test_answer_invalid::after {
+  content: "\0007";
+  background: darkred;
+}
+.test_answer_invalid {
+  background: red;
+}
+.test_btn {
+  cursor: pointer;
+  background: var(--gradient_2);
+  border: var(--border);
+  padding: 12px 32px;
+  font-size: 16px;
+  margin: 16px auto;
+  display: inline-block;
+  font-weight: 100;
+  border-radius: 32px;
+}
+.test_btn_disable {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.test_result {
+    display: none;
+    margin-top: 72px;
+    text-align: center;
+}
+.test_result_title {
+    font-size: 128px;
+}
+.test_result_info {
+    font-size: 32px;
+    font-weight: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.test_result_info>*:not(:last-child){
+    margin-right: 16px;
+}
+.test_result_num{
+    font-size: 48px;
+}
