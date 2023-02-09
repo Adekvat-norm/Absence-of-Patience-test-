@@ -12,6 +12,7 @@ const dom = {
   },
   answers: document.getElementById("answers"),
   Next: document.getElementById("next"),
+  reset: document.getElementById("newStart"),
   result: {
     resultBlock: document.getElementById("result"),
     validAnswers: document.getElementById("valid-answers"),
@@ -33,6 +34,7 @@ dom.Next.onclick = () => {
     step;
   }
   renderTest(totalSteps, step);
+  dom.answers.classList.remove("test_answers_disable");
 };
 
 //Вывод всего теста
@@ -40,6 +42,8 @@ function renderTest(total, step) {
   renderProgress(total, step);
   if (step + 1 == total) {
     changeBtnOnResult();
+  } else if (step == total) {
+    restartBtn();
   }
   if (step < total) {
     const answers = data.questions[step].answers;
@@ -90,17 +94,24 @@ const answersHtml = buildAnswerHtml(data.questions[0].answers);
 function renderAnswers(htmlString) {
   dom.answers.innerHTML = htmlString;
 }
+debugger;
 
-//отслеживание клика на ответа
+//отслеживание клика на ответ
 dom.answers.onclick = (event) => {
   const target = event.target;
   if (target.classList.contains("test_answer")) {
-    const answerNumber = target.dataset.id;
-    const isValid = checkAnswer(step, answerNumber);
-    const answerClass = isValid ? "test_answer_valid" : "test_answer_invalid";
-    target.classList.add(answerClass);
-    isDisableBtn(false);
-    validAnswersCount = isValid ? validAnswersCount + 1 : validAnswersCount;
+    let counter = 0;
+    if (counter === 0) {
+      debugger;
+      counter++;
+      const answerNumber = target.dataset.id;
+      const isValid = checkAnswer(step, answerNumber);
+      const answerClass = isValid ? "test_answer_valid" : "test_answer_invalid";
+      target.classList.add(answerClass);
+      isDisableBtn(false);
+      validAnswersCount = isValid ? validAnswersCount + 1 : validAnswersCount;
+      dom.answers.classList.add("test_answers_disable");
+    }
   }
 };
 
@@ -136,3 +147,22 @@ function renderResults() {
   dom.result.validAnswers.innerHTML = validAnswersCount;
   dom.result.questionsCount.innerHTML = totalSteps;
 }
+debugger;
+function restartBtn() {
+  let state = dom.reset.style.display; //смотрим, включен ли сейчас элемент
+  if (state == "none") {
+    dom.reset.style.display = "";
+  }
+  dom.reset.onclick = () => {
+    history.go();
+  };
+}
+
+function hidden(hidden) {
+  let state = hidden.style.display; //смотрим, включен ли сейчас элемент
+  if (state == "") {
+    hidden.style.display = "none";
+  }
+}
+
+hidden(dom.reset);

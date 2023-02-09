@@ -1,3 +1,6 @@
+.fone {
+  background: repeating-radial-gradient(red, green);
+}
 :root {
   --gradient: linear-gradient(
     to right bottom,
@@ -25,7 +28,7 @@ body {
 
 .test {
   width: 800px;
-  min-height: 600px;
+  min-height: 500px;
   padding: 64px;
   background: var(--gradient);
   border-radius: 32px;
@@ -86,6 +89,9 @@ body {
   background: var(--questColor);
   padding: 12px;
   border-radius: var(--radius);
+}
+.test_answers_disable {
+  pointer-events: none;
 }
 .test_answer {
   cursor: pointer;
@@ -149,25 +155,36 @@ body {
   opacity: 0.5;
   pointer-events: none;
 }
+.test_btn_reset {
+  cursor: pointer;
+  background: var(--gradient_2);
+  border: var(--border);
+  padding: 12px 32px;
+  font-size: 16px;
+  margin: 16px auto;
+  display: inline-block;
+  font-weight: 100;
+  border-radius: 32px;
+  /* display: none; */
+}
 .test_result {
-    display: none;
-    margin-top: 72px;
-    text-align: center;
+  display: none;
+  margin-top: 72px;
+  text-align: center;
 }
 .test_result_title {
-    font-size: 128px;
+  font-size: 128px;
 }
 .test_result_info {
-    font-size: 32px;
-    font-weight: 200;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+  font-size: 32px;
+  font-weight: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.test_result_info>*:not(:last-child){
-    margin-right: 16px;
+.test_result_info > *:not(:last-child) {
+  margin-right: 16px;
 }
-.test_result_num{
-    font-size: 48px;
+.test_result_num {
+  font-size: 48px;
 }
